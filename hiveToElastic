@@ -1,0 +1,12 @@
+For Hive Blog
+ 
+Setup mapr-elasticsearch and mapr-kibana
+ 
+Download HIVE Hadoop 6.2.3 lib jars
+Add to /opt/mapr/hive/hive/lib
+ 
+Restart hiveserver2
+ 
+Get keystore password
+ 
+create external table sample_07_es (code string, description string, total_emp int, salary int) STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler' TBLPROPERTIES('es.resource' = 'job/jobs','es.nodes'='mapr04.wired.carnoustie','es.index.auto.create' = 'true','es.net.ssl'='true','es.net.ssl.keystore.location'='file:///opt/mapr/elasticsearch/elasticsearch-6.2.3/etc/elasticsearch/keystores/kibana-usr-keystore.jks','es.net.ssl.truststore.location'='file:///opt/mapr/elasticsearch/elasticsearch-6.2.3/etc/elasticsearch/keystores/truststore.jks','es.net.ssl.keystore.pass'='8a0e4b9d-1ec8-4b9c-a438-617f2a53ad30');
