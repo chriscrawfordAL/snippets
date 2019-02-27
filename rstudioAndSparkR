@@ -1,0 +1,31 @@
+https://mapr.com/blog/how-to-using-r-studio-with-the-mapr-data-science-refinery/
+ 
+https://download1.rstudio.org/rstudio-1.1.463-x86_64.rpm
+ 
+Zeppelin
+Change local[*] and scopes
+ 
+(Zeppelin)
+%r data(faithful)
+faith <- createDataFrame(sqlContext, faithful)
+createOrReplaceTempView (faith, "faithful")
+ed <- sql(sqlContext, "SELECT * from faithful")
+SparkR:::head(ed)
+ 
+Sys.setenv(SPARK_HOME="/opt/mapr/spark/spark-2.3.1")
+ 
+(Rstudio)
+library(SparkR, lib.loc = c(file.path(Sys.getenv("SPARK_HOME"), "R", "lib")))
+sparkR.session(master = "local[*]")
+data(faithful)
+faith <- createDataFrame(faithful)
+createOrReplaceTempView(faith, "faithful")
+ed <- sql("SELECT * from faithful")
+SparkR:::head(ed)
+ 
+library(sparklyr)
+options("sparklyr.verbose" = TRUE)
+Sys.setenv(SPARK_HOME="/opt/mapr/spark/spark-2.1.0")
+sc <- spark_connect(master = "http://localhost:8998",method = "livy")
+ 
+echo "spark.yarn.archive maprfs:///opt/spark-jars-2.3.1.zip" >> /opt/mapr/spark/spark-2.3.1/conf/spark-defaults.conf
