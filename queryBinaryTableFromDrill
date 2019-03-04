@@ -1,0 +1,1 @@
+select CONVERT_FROM(`/datasets/snowflakeBIN`.snowflake.firstName, 'UTF8') AS firstName from dfs.`/datasets/snowflakeBIN`
