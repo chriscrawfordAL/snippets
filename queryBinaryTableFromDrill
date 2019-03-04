@@ -1,1 +1,4 @@
-select CONVERT_FROM(`/datasets/snowflakeBIN`.snowflake.firstName, 'UTF8') AS firstName from dfs.`/datasets/snowflakeBIN`
+select CONVERT_FROM(`/datasets/snowflakeBIN`.snowflake.firstName, 'UTF8') AS firstName,
+CONVERT_FROM(`/datasets/snowflakeBIN`.snowflake.handicap, 'UTF8') AS handicap,
+CONVERT_FROM(`/datasets/snowflakeBIN`.snowflake.lastName, 'UTF8') AS lastName
+from dfs.`/datasets/snowflakeBIN`
