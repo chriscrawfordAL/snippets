@@ -1,0 +1,23 @@
+create external table trips_parquet (
+  VendorID STRING,
+  tpep_pickup_datetime STRING,
+  tpep_dropoff_datetime STRING,
+  passenger_count STRING,
+  trip_distance STRING,
+  pickup_longitude STRING,
+  pickup_latitude STRING,
+  RatecodeID STRING,
+  store_and_fwd_flag STRING,
+  dropoff_longitude STRING,
+  dropoff_latitude STRING,
+  payment_type STRING,
+  fare_amount STRING,
+  extra STRING,
+  mta_tax STRING,
+  tip_amount STRING,
+  tolls_amount STRING,
+  improvement_surcharge STRING,
+  total_amount STRING)
+  ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+  STORED AS PARQUET
+  LOCATION '/datasets/nyctaxi/yellow_tripdata_2016-01.parquet';
