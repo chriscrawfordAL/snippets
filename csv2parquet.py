@@ -1,3 +1,18 @@
+pip install pyspark==<Spark Version>
+**Spark version must match pyspark version**
+Run "pip freeze" to see what version of what packages are installed
+
+export PYTHON_PATH=${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-0.10.7-src.zip:${PYTHON_PATH}
+    
+Execute with:
+  spark-submit csv2parquet.py
+
+
+--------------------------------------
+
+
+
+
 from pyspark import SparkContext
 from pyspark.sql import SQLContext
 from pyspark.sql.types import *
