@@ -1,0 +1,3 @@
+sqlline -u "jdbc:drill:drillbit=mapr01.wired.carnoustie:31010;auth=maprsasl"
+
+sqlline -u "jdbc:drill:zk=mapr01.wired.carnoustie:5181,mapr04.wired.carnoustie:5181,mapr05.wired.carnoustie:5181;auth=maprsasl"
