@@ -1,0 +1,9 @@
+This code will create an md5 hash of a value and add it to a JSON dictionary
+
+    uniqueId = float(row['dropoff_latitude']) * float(row['fare_amount'])
+    uniqueIdStr = str(uniqueId)
+    hashId=hashlib.md5(uniqueIdStr.encode())
+
+    row['_id'] = hashId.hexdigest()
+
+    print(json.dumps(dict(row)))
