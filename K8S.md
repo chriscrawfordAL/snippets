@@ -1,3 +1,8 @@
+#### Remove all Taints
+```
+kubectl taint nodes --all node-role.kubernetes.io/master-
+```
+
 #### Set StorageClass as default:
 
 ```
