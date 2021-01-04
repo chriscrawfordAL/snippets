@@ -37,3 +37,21 @@ spec:
     - image: nginx
       name: stan
 ```
+
+#### Increase Image Pull Timeout
+
+Option 1: Update kube-apiserver.yaml
+The kube-apiserver.yaml file doesn’t have a flag for directly setting the image-pull-progress-deadline.
+However, there is a requestion timeout option
+ 
+--request-timeout duration     Default: 1m0s
+
+An optional field indicating the duration a handler must keep a request open before timing it out. This is the default request timeout for requests but may be overridden by flags such as --min-request-timeout for specific types of requests.
+ 
+Bumped up to 5m0s
+
+Option 2:
+Modify /etc/sysconfig/kubelet on the host where the offending pod is scheduled
+edit the KUBELET_EXTRA_ARGS line to read:
+     KUBELET_EXTRA_ARGS=--image-pull-progress-deadline=30m0s
+
