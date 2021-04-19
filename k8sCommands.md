@@ -27,3 +27,13 @@ Increase mem of VB to 4GiB
 ```
 minikube config set memory 4096
 ```
+
+Create role, clusterrole
+```
+k create clusterrole gianna-additional --verb=create --resource=pods --resource=deployments
+```
+
+Assign the clusterrole to the security namespace for user gianna
+```
+k -n security create rolebinding gianna-additional --clusterrole=gianna-additional --user=gianna
+```
