@@ -57,3 +57,8 @@ k run p2-pod --image=nginx:1.17-alpine $do > p2.yaml
 ```
 k -n project-hamster expose pod p2-pod --name p2-service --port 3000 --target-port 80
 ````
+
+#### Look at CPU and MEM Usage in a Namespace
+```
+kubectl -n <namespace> get pods -o custom-columns=NAME:metadata.name,MEM_LIMIT:spec.containers[*].resources.limits.memory,MEM_REQUEST:spec.containers[*].resources.requests.memory,CPU_LIMIT:spec.containers[*].resources.limits.cpu,CPU_REQUEST:spec.containers[*].resources.requests.cpu
+```
