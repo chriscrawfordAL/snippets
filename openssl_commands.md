@@ -13,3 +13,6 @@ openssl x509 -noout -text -in minica.pem
 ```
 openssl x509  -noout -text -in /etc/kubernetes/pki/etcd/server.crt | grep Validity -A2
 ```
+
+#### How to use minica to generate certs for Splunk
+[Using minica with Splunk](https://idelta.co.uk/minica-easily-generate-certificates/)
