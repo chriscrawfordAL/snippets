@@ -5,9 +5,11 @@ spark = SparkSession.builder.appName("myAppName").getOrCreate()
 
 rdd1 = spark.sparkContext.parallelize(some_list)
 
+
 # OR
 
-sc = spark.sparkContext()
+from pyspark.context import SparkContext
+sc = SparkContext('local', 'test')
 myfile = "/path/to/some/file.csv"
 rdd2 = sc.textFile(myfile)
 rdd2.take(5)
